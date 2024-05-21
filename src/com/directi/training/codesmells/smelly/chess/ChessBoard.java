@@ -8,6 +8,7 @@ import com.directi.training.codesmells.smelly.pieces.Knight;
 import com.directi.training.codesmells.smelly.pieces.Pawn;
 import com.directi.training.codesmells.smelly.pieces.Piece;
 
+
 public class ChessBoard
 {
     private final Cell[][] _board;

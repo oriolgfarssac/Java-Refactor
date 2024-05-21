@@ -6,6 +6,12 @@ import com.directi.training.codesmells.smelly.pieces.*;
 
 import java.util.Scanner;
 
+/**
+ * @author Oriol
+ * @author Arman
+ * @see <a href="https://github.com/harshmanocha/Refactoring.git">Repositori de GitHub</a>
+ */
+
 public class GameEngine
 {
     private static final Scanner scanner = new Scanner(System.in);
@@ -64,6 +70,12 @@ public class GameEngine
         int col = scanner.nextInt() - 1;
         return new Position(row, col);
     }
+
+
+    /**
+     * Fa un reset del taulell d'escacs a la seva posicio inicial.
+     * Posa les peces tant blanques com negres a les posicions d'inici.
+     */
 
     public void resetBoard()
     {
@@ -129,6 +141,15 @@ public class GameEngine
         return _player1 == _currentPlayer ? _player2 : _player1;
     }
 
+    /**
+     * Mou una peça a una nova posició al tauler d'escacs si el moviment és vàlid.
+     * Aquest mètode intenta moure una peça des de la seva posició actual a una posició especificada.
+     * Després de realitzar el moviment, imprimeix l'estat actual del tauler d'escacs. Si un rei ha estat capturat,
+     * acaba el joc actual i n'inicia un de nou. Si no, canvia al jugador contrari.
+     *
+     * @param move L'objecte move que conté les posicions d'inici i final per a la peça que es mourà.
+     */
+
     public void makeMove(Move move)
     {
         _chessBoard.movePiece(move.getFrom().getRow(), move.getFrom().getColumn(), move.getTo().getRow(),
@@ -142,6 +163,14 @@ public class GameEngine
             _currentPlayer = getOtherPlayer();
         }
     }
+
+    /**
+     * Un moviment es considera vàlid si el jugador està movent la seva pròpia peça
+     * i si el moviment es legal per les regles del joc i de la peça.
+     *
+     * @param move El moviment a de veure si les posiciones de inici i desti son legals i correctes
+     * @return true es true si el moviment es valid, false sino no es legal o no cumpleix les normes.
+     */
 
     public boolean isValidMove(Move move)
     {
@@ -159,4 +188,5 @@ public class GameEngine
     {
         return _chessBoard;
     }
+
 }
